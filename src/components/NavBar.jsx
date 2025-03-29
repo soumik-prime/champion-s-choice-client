@@ -3,7 +3,7 @@ import ThemeController from './ThemeController';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const [userLogedIn, setUserLogedIn] = useState(true);
+  const [userLogedIn, setUserLogedIn] = useState(false);
   const [isDarkMode, setDarkMode] = useState(false);
   useEffect(() => {
     const savedTheme = localStorage.getItem('Theme');
@@ -42,7 +42,7 @@ const NavBar = () => {
             >
               <div className='w-full pl-4'><ThemeController isDarkMode={isDarkMode} handleChange={handleChange}></ThemeController></div>
               <a role="tab" className="tab justify-start tab-active">Home</a>
-              <a role="tab" className="tab tab-active justify-start">All Sports Equipments</a>
+              <a role="tab" className="tab justify-start">All Sports Equipments</a>
               {
                 userLogedIn &&
                 <>
@@ -55,7 +55,7 @@ const NavBar = () => {
         </div>
 
         <div className="flex-1 font-bold text-nowrap">
-          <a className="text-xs sm:text-base md:text-xl font-extrabold">Champion's Choice</a>
+          <a className="text-xs sm:text-base md:text-xl font-extrabold font-logo-res">Champion's Choice</a>
         </div>
         <div className='hidden md:block'>
           <div role="tablist" className="tabs">
@@ -71,7 +71,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className="flex gap-2 md:gap-4 items-center">
-          <div className='hidden md:block'><ThemeController isDarkMode={isDarkMode} handleChange={handleChange}></ThemeController></div>
+          <div className='hidden md:block mx-2'><ThemeController isDarkMode={isDarkMode} handleChange={handleChange}></ThemeController></div>
           {
             !userLogedIn ?
               <>

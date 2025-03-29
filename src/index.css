@@ -1,6 +1,23 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.font-logo-res {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .font-logo-res {
+    font-size: 1.5rem;
+  }
+}
+
+
 html, body {
   transition: background-color 0.8s ease, color 0.3s ease;
 }
