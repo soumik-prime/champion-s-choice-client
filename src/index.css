@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 .font-logo-res {
   font-family: "Dancing Script", cursive;
@@ -19,8 +19,5 @@
 
 
 html, body {
-  transition: background-color 0.8s ease, color 0.3s ease;
-}
-button, .btn {
   transition: background-color 0.8s ease, color 0.3s ease;
 }

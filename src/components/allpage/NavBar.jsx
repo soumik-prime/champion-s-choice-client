@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import ThemeController from './ThemeController';
-import { Link } from 'react-router-dom';
+import ThemeController from '../ThemeController';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
-  const [userLogedIn, setUserLogedIn] = useState(false);
+  const [userLogedIn, setUserLogedIn] = useState(true);
   const [isDarkMode, setDarkMode] = useState(false);
+  const location = useLocation().pathname;
+  const navigate = useNavigate();
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('Theme');
     if (savedTheme) {
@@ -41,13 +44,13 @@ const NavBar = () => {
               className="dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow flex flex-col"
             >
               <div className='w-full pl-4'><ThemeController isDarkMode={isDarkMode} handleChange={handleChange}></ThemeController></div>
-              <a role="tab" className="tab justify-start tab-active">Home</a>
-              <a role="tab" className="tab justify-start">All Sports Equipments</a>
+              <NavLink to='/' className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")} role="tab">Home</NavLink>
+              <NavLink to='/allequipments' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>All Sports Equipments</NavLink>
               {
                 userLogedIn &&
                 <>
-                  <a role="tab" className="tab justify-start">Add New Equipment</a>
-                  <a role="tab" className="tab justify-start">My Equipments List</a>
+                  <NavLink to='/addequipment' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>Add New Equipment</NavLink>
+                  <NavLink to='/myequipmentslist' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>My Equipments List</NavLink>
                 </>
               }
             </div>
@@ -59,13 +62,13 @@ const NavBar = () => {
         </div>
         <div className='hidden md:block'>
           <div role="tablist" className="tabs">
-            <a role="tab" className="tab tab-active">Home</a>
-            <a role="tab" className="tab">All Sports Equipments</a>
+            <NavLink to='/' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>Home</NavLink>
+            <NavLink to='/allequipments' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>All Sports Equipments</NavLink>
             {
               userLogedIn &&
               <>
-                <a role="tab" className="tab">Add New Equipment</a>
-                <a role="tab" className="tab">My Equipments List</a>
+                <NavLink to='/addequipment' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>Add New Equipment</NavLink>
+                <NavLink to='myequipmentslist' role="tab" className={({ isActive }) => (isActive ? "tab justify-start tab-active" : "tab justify-start")}>My Equipments List</NavLink>
               </>
             }
           </div>
@@ -75,8 +78,8 @@ const NavBar = () => {
           {
             !userLogedIn ?
               <>
-                <button className="btn btn-xs sm:btn-sm btn-info text-xs">Sign In</button>
-                <button className="btn btn-xs sm:btn-sm btn-info text-xs">Register Now</button>
+                {location === '/login' || <button onClick={() => navigate('/login')} className="btn btn-xs sm:btn-sm btn-info text-xs">Log In</button>}
+                {location === '/registration' || <button onClick={() => navigate('/registration')} className="btn btn-xs sm:btn-sm btn-info text-xs">Register Now</button>}
               </>
               :
               <div className="dropdown dropdown-end">
