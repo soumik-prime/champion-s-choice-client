@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-
+@custom-variant dark (&:where(.dark, .dark *));
 
 .font-logo-res {
   font-family: "Dancing Script", cursive;

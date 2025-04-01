@@ -20,10 +20,12 @@ const NavBar = () => {
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     }
     else {
       document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light')
     }
   }, [isDarkMode]);
@@ -58,7 +60,7 @@ const NavBar = () => {
         </div>
 
         <div className="flex-1 font-bold text-nowrap">
-          <a className="text-xs sm:text-base md:text-xl font-extrabold font-logo-res">Champion's Choice</a>
+          <a className="text-xs sm:text-base md:text-xl font-extrabold font-logo-res select-none">Champion's Choice</a>
         </div>
         <div className='hidden md:block'>
           <div role="tablist" className="tabs">
