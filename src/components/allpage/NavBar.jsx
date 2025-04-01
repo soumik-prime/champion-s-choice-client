@@ -3,7 +3,7 @@ import ThemeController from '../ThemeController';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
-  const [userLogedIn, setUserLogedIn] = useState(true);
+  const [userLogedIn, setUserLogedIn] = useState(false);
   const [isDarkMode, setDarkMode] = useState(false);
   const location = useLocation().pathname;
   const navigate = useNavigate();
